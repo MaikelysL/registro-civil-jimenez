@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Registro Civil Municipal de Jiménez | Tu identidad, nuestro compromiso</title>
+    <!-- Fuentes y estilos base -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f9fe;
+            color: #1a2c3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* paleta institucional: azules formales, seguridad */
+        :root {
+            --primary-dark: #0a2b4e;
+            --primary-main: #1e4a76;
+            --primary-light: #2c6e9e;
+            --accent-blue: #3b82f6;
+            --soft-bg: #eef2fa;
+            --gray-light: #f8fafc;
+            --gray-border: #cbd5e1;
+            --text-dark: #0f172a;
+            --text-muted: #334155;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* contenedor principal */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER SUPERIOR ========== */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: white;
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .aux-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .aux-links a {
+            color: #e0f2fe;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .aux-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .search-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 12px;
+            border-radius: 40px;
+        }
+
+        .search-area i {
+            font-size: 0.8rem;
+            color: #b9d0f0;
+        }
+
+        .search-area input {
+            background: transparent;
+            border: none;
+            padding: 6px 0;
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+            width: 170px;
+        }
+
+        .search-area input::placeholder {
+            color: #cbdff5;
+            font-weight: 300;
+        }
+
+        /* ========== LOGO Y BARRA PRINCIPAL ========== */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0 12px 0;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            background-color: var(--primary-main);
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* navegación horizontal */
+        .nav-main {
+            background: var(--white);
+            border-radius: 60px;
+            box-shadow: var(--shadow-sm);
+            margin: 8px 0 20px 0;
+            padding: 0 8px;
+            border: 1px solid #e2edf7;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .nav-menu li a {
+            display: inline-block;
+            padding: 14px 20px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.2s;
+            border-radius: 40px;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu li a:hover {
+            background-color: var(--soft-bg);
+            color: var(--primary-main);
+        }
+
+        /* ========== HERO (imagen real + botón) ========== */
+        .hero {
+            background: linear-gradient(107deg, #0b2b44 0%, #164863 100%);
+            border-radius: 32px;
+            margin: 20px 0 32px 0;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 48px 40px;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            background-color: #f9b81b;
+            color: #1e2f3e;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcd4a;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-height: 280px;
+            background-image: url('https://placehold.co/900x500/2c5f8a/white?text=Registro+Civil+Jiménez');
+            background-size: cover;
+            background-position: center 30%;
+            position: relative;
+            min-width: 280px;
+        }
+        /* imagen real humanizada (demo: foto real de comunidad/vzla) */
+        .hero-image {
+            background-image: url('https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&w=800');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* ========== SERVICIOS PRINCIPALES ========== */
+        .section-title {
+            text-align: center;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 48px 0 32px 0;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-blue);
+            margin: 14px auto 0;
+            border-radius: 4px;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 32px 24px;
+            flex: 1;
+            min-width: 230px;
+            text-align: center;
+            transition: all 0.25s;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e9f0f8;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+        }
+        .service-icon {
+            font-size: 48px;
+            color: var(--primary-main);
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--primary-light);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: var(--primary-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background: var(--primary-main);
+            color: white;
+            border-color: var(--primary-main);
+        }
+
+        /* ========== ACCESOS RAPIDOS (menú vertical + botón consultar) ========== */
+        .quick-access {
+            background: var(--white);
+            border-radius: 32px;
+            margin: 48px 0 40px;
+            padding: 28px 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e0edf9;
+        }
+        .quick-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-dark);
+        }
+        .quick-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: stretch;
+        }
+        .quick-links {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .quick-item {
+            background: var(--gray-light);
+            padding: 12px 18px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .quick-item i {
+            width: 28px;
+            color: var(--primary-main);
+            font-size: 1.2rem;
+        }
+        .quick-item span {
+            color: var(--text-dark);
+        }
+        .quick-item:hover {
+            background: #e6f0fc;
+            border-color: var(--primary-light);
+            transform: translateX(3px);
+        }
+        .consult-block {
+            flex: 1;
+            background: #eef4ff;
+            border-radius: 28px;
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .consult-block p {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        .btn-consult {
+            background: var(--primary-main);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 48px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-consult:hover {
+            background: #0f3b5c;
+            transform: scale(0.98);
+        }
+
+        /* ========== SECCIÓN TRÁMITE EN 3 PASOS (ELIGE, DATOS, ÉXITO) ========== */
+        .steps-section {
+            background: var(--soft-bg);
+            border-radius: 40px;
+            padding: 32px 28px;
+            margin: 48px 0;
+        }
+        .steps-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .step {
+            flex: 1;
+            background: white;
+            border-radius: 28px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            min-width: 200px;
+        }
+        .step-number {
+            background: var(--primary-main);
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin: 0 auto 18px;
+        }
+        .step h4 {
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+        }
+        .step select, .step input {
+            width: 90%;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 40px;
+            border: 1px solid var(--gray-border);
+            font-family: inherit;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 24px 0 12px;
+        }
+        .btn-download, .btn-print {
+            background: var(--primary-light);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .btn-print {
+            background: #2c5f8a;
+        }
+        .btn-download:hover, .btn-print:hover {
+            filter: brightness(1.05);
+        }
+        .result-message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+            background: #e3f2fd;
+            padding: 12px;
+            border-radius: 60px;
+        }
+
+        /* ========== FOOTER completo ========== */
+        footer {
+            background: var(--primary-dark);
+            color: #eef2ff;
+            margin-top: 60px;
+            padding: 40px 0 20px;
+            border-radius: 32px 32px 0 0;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 36px;
+            margin-bottom: 30px;
+        }
+        .footer-info h4, .footer-social h4 {
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .footer-info p {
+            margin: 8px 0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.8rem;
+        }
+        .social-icons a {
+            color: #cbdff5;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            border-top: 1px solid #2c577c;
+            padding-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+        .footer-bottom a {
+            color: #bfd9ff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .hero-content { padding: 32px 24px; }
+            .hero-content h2 { font-size: 1.6rem; }
+            .nav-menu li a { padding: 10px 14px; font-size: 0.85rem; }
+            .quick-grid { flex-direction: column; }
+        }
+        button {
+            cursor: pointer;
+        }
+        .toast-msg {
+            background: #1e4a76;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container">
+        <div class="aux-links">
+            <a href="#"><i class="fas fa-sitemap"></i> Mapa del sitio</a>
+            <a href="mailto:registrocivil@jimenez.gob.ve"><i class="fas fa-envelope"></i> Correo institucional</a>
+        </div>
+        <div class="search-area">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar en el sitio... (trámites, actas)">
+            <span style="font-size:12px;">🔍</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="logo-area">
+        <div class="brand">
+            <div class="logo-icon">
+                <i class="fas fa-id-card"></i>
+            </div>
+            <div class="brand-text">
+                <h1>Registro Civil Municipal de Jiménez</h1>
+                <p>Identidad, seguridad y compromiso ciudadano</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-main">
+        <ul class="nav-menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Contactos</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero con imagen real humana -->
+    <div class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h2>Tu identidad, nuestro compromiso</h2>
+                <p>Más de 50 años acompañando a la comunidad del Municipio Jiménez. Agiliza trámites, actas y certificaciones con nuestra plataforma moderna y cercana.</p>
+                <button class="btn-primary" id="conoceMasBtn"><i class="fas fa-chevron-circle-right"></i> Conoce más</button>
+            </div>
+            <div class="hero-image"></div>
+        </div>
+    </div>
+
+    <!-- SERVICIOS que te ofrecemos -->
+    <h2 class="section-title">Servicios que te ofrecemos</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-headset"></i></div>
+            <h3>Atención al Ciudadano</h3>
+            <p>Orientación personalizada, consultas y soporte para cada gestión.</p>
+            <button class="btn-outline">Agendar cita</button>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>Trámites</h3>
+            <p>Actas de nacimiento, matrimonio, defunción, cédulas y más.</p>
+            <button class="btn-outline">Ver trámites</button>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+            <h3>Agenda tu Cita</h3>
+            <p>Programa tu visita y evita largas filas, rápido y sencillo.</p>
+            <button class="btn-outline">Reservar cita</button>
+        </div>
+    </div>
+
+    <!-- ACCESOS RÁPIDOS (menú vertical) -->
+    <div class="quick-access">
+        <div class="quick-title"><i class="fas fa-bolt"></i> Accesos Rápidos</div>
+        <div class="quick-grid">
+            <div class="quick-links">
+                <div class="quick-item"><i class="fas fa-user-check"></i> <span>Atención al Ciudadano</span></div>
+                <div class="quick-item"><i class="fas fa-folder-open"></i> <span>Trámites</span></div>
+                <div class="quick-item"><i class="fas fa-calendar-plus"></i> <span>Agendar Citas</span></div>
+                <div class="quick-item"><i class="fas fa-certificate"></i> <span>Certificaciones</span></div>
+                <div class="quick-item"><i class="fas fa-building"></i> <span>Sobre Nosotros</span></div>
+                <div class="quick-item"><i class="fas fa-chart-line"></i> <span>Estado del Trámite</span></div>
+            </div>
+            <div class="consult-block">
+                <p><i class="fas fa-search"></i> ¿Necesitas información personalizada?</p>
+                <button class="btn-consult" id="consultarBtn">Consultar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRÁMITE DE ACTAS: ELIGE, DATOS, ÉXITO (descargar/imprimir) -->
+    <div class="steps-section">
+        <div class="steps-title">Obtén tu acta en 3 pasos simples</div>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>ELIGE</h4>
+                <select id="tipoActa">
+                    <option value="Nacimiento">📄 Nacimiento</option>
+                    <option value="Matrimonio">💍 Matrimonio</option>
+                    <option value="Defunción">🕊️ Defunción</option>
+                    <option value="Otros">📑 Otros (Constancias, etc)</option>
+                </select>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>DATOS</h4>
+                <input type="text" id="nombreSolicitante" placeholder="Nombre completo" style="width:90%;">
+                <input type="text" id="cedula" placeholder="Cédula de identidad" style="width:90%; margin-top:12px;">
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>ÉXITO</h4>
+                <p style="font-size:0.9rem;">Acta generada digitalmente</p>
+                <div class="action-buttons">
+                    <button class="btn-download" id="descargarBtn"><i class="fas fa-download"></i> DESCARGAR</button>
+                    <button class="btn-print" id="imprimirBtn"><i class="fas fa-print"></i> IMPRIMIR</button>
+                </div>
+                <div id="resultInfo" class="result-message">Selecciona tipo y completa datos</div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- fin container principal -->
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h4><i class="fas fa-map-marker-alt"></i> Contacto físico</h4>
+                <p><i class="fas fa-location-dot"></i> Calle Bolívar con Libertad, Edificio Municipal, Barquisimeto - Municipio Jiménez, Lara, Venezuela</p>
+                <p><i class="fas fa-phone-alt"></i> +58 (251) 254-7890</p>
+                <p><i class="fas fa-envelope"></i> registrocivil@jimenez.gob.ve</p>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos en redes</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div style="margin-top: 24px;">
+                    <h4>Ayuda directa</h4>
+                    <p><i class="fas fa-headset"></i> Línea gratuita: 0800-REGISTRO</p>
+                    <p><i class="fas fa-comments"></i> Chat en línea disponible 8am - 4pm</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 Registro Civil Municipal de Jiménez - Todos los derechos reservados</div>
+            <div>
+                <a href="#">Políticas de privacidad</a> | 
+                <a href="#">Términos y condiciones</a> | 
+                <a href="#">Accesibilidad</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- script con funciones interactivas: alertas, descarga/imprimir, consulta, notificaciones -->
+<script>
+    (function() {
+        // Botón Conoce más del Hero
+        const conoceBtn = document.getElementById('conoceMasBtn');
+        if(conoceBtn) {
+            conoceBtn.addEventListener('click', () => {
+                alert("📋 Registro Civil Municipal Jiménez: Brindamos certificaciones de nacimiento, matrimonio, defunción, cédulas y más. Atención humanizada y ágil.");
+            });
+        }
+
+        // Botón Consultar (accesos rápidos)
+        const consultarBtn = document.getElementById('consultarBtn');
+        if(consultarBtn) {
+            consultarBtn.addEventListener('click', () => {
+                alert("🔍 Consulta tu trámite en línea próximamente. Por ahora comunícate al 0800-REGISTRO o acude a nuestra oficina.");
+            });
+        }
+
+        // Elementos del paso 3 (Descargar e Imprimir)
+        const tipoSelect = document.getElementById('tipoActa');
+        const nombreInput = document.getElementById('nombreSolicitante');
+        const cedulaInput = document.getElementById('cedula');
+        const resultDiv = document.getElementById('resultInfo');
+        const descargarBtn = document.getElementById('descargarBtn');
+        const imprimirBtn = document.getElementById('imprimirBtn');
+
+        function generarContenidoActa() {
+            const tipo = tipoSelect.value;
+            const nombre = nombreInput.value.trim() || "Ciudadano(a)";
+            const cedula = cedulaInput.value.trim() || "V-XXXXXXX";
+            const fecha = new Date().toLocaleDateString('es-VE');
+            return `📌 REGISTRO CIVIL MUNICIPAL DE JIMÉNEZ\nTipo de Acta: ${tipo}\nSolicitante: ${nombre}\nCédula: ${cedula}\nFecha de emisión: ${fecha}\nCódigo de verificación: RCJ-${Math.floor(Math.random()*10000)}-VE\n\nDocumento oficial con validez legal.`;
+        }
+
+        function actualizarMensajeExito() {
+            const tipo = tipoSelect.value;
+            const nombre = nombreInput.value.trim();
+            if(nombre === "") {
+                resultDiv.innerHTML = "⚠️ Ingresa tus datos (nombre) para generar el acta.";
+                return false;
+            }
+            resultDiv.innerHTML = `✅ ¡Listo! Acta de ${tipo} generada exitosamente para ${nombre}. Usa los botones DESCARGAR o IMPRIMIR.`;
+            return true;
+        }
+
+        function descargarActa() {
+            if(nombreInput.value.trim() === "") {
+                alert("Por favor completa el campo NOMBRE en el paso 2 antes de descargar.");
+                return;
+            }
+            const contenido = generarContenidoActa();
+            const blob = new Blob([contenido], {type: "text/plain;charset=utf-8"});
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+            link.download = `Acta_${tipoSelect.value}_${nombreInput.value.trim()}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            actualizarMensajeExito();
+        }
+
+        function imprimirActa() {
+            if(nombreInput.value.trim() === "") {
+                alert("Ingresa el nombre completo para imprimir el acta.");
+                return;
+            }
+            const contenido = generarContenidoActa();
+            const ventana = window.open('', '_blank');
+            ventana.document.write(`
+                <html>
+                <head><title>Acta Registro Civil Jiménez</title>
+                <style>body { font-family: 'Inter',sans-serif; padding:2rem; } pre { font-size:1rem; white-space: pre-wrap; }</style>
+                </head>
+                <body><h2>Registro Civil Municipal de Jiménez</h2><pre>${contenido}</pre><hr><p><em>Documento generado digitalmente - válido para trámites presenciales.</em></p></body>
+                </html>
+            `);
+            ventana.document.close();
+            ventana.print();
+            actualizarMensajeExito();
+        }
+
+        descargarBtn.addEventListener('click', descargarActa);
+        imprimirBtn.addEventListener('click', imprimirActa);
+        nombreInput.addEventListener('input', function() {
+            if(this.value.trim() !== "") actualizarMensajeExito();
+            else resultDiv.innerHTML = "📝 Esperando nombre para generar acta.";
+        });
+        tipoSelect.addEventListener('change', () => {
+            if(nombreInput.value.trim() !== "") actualizarMensajeExito();
+        });
+
+        // clicks a los botones de servicios (simulan interactividad)
+        const btnsOutline = document.querySelectorAll('.btn-outline');
+        btnsOutline.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const cardTitle = btn.closest('.service-card')?.querySelector('h3')?.innerText || "servicio";
+                alert(`📅 Redirigiendo al área de ${cardTitle}. Próximamente podrás gestionar en línea. Comunícate con nosotros.`);
+            });
+        });
+
+        // accesos rápidos click (simular navegación)
+        const quickItems = document.querySelectorAll('.quick-item');
+        quickItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const text = item.querySelector('span')?.innerText || "opción";
+                alert(`🔹 Acceso rápido: ${text}. Muy pronto habilitaremos módulo especial.`);
+            });
+        });
+    })();
+</script>
+</body>
+</html>
